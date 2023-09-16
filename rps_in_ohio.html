@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rps :V</title>
+</head>
+<body>
+  <div class="container">
+    <input type="text"  readonly value="You're Choice" readonly>
+    <input class="text" type="text" id="result" readonly>
+    
+    
+    
+    <button id="rock" onclick="a(`Rock`)">ROCK</button>
+    <button id="paper" onclick="a(`Paper`)">PAPER</button>
+    <button id="scissor" onclick="a(`Scissor`)">SCISSOR</button>
+
+    <input type="text"  readonly value="Enemy Choice" readonly>
+    <input class="text" type="text" id="enemy" readonly>
+    <input class="rest" type="text" id="rest" readonly>
+    
+  </div>
+
+
+  <script>
+    function a(val) {
+      let a = Math.floor(Math.random() * 3)
+      let b;
+      if (a === 0) {
+        b = "Rock"
+        document.getElementById("enemy").value = b
+      } else if (a === 1){
+        b = "Paper"
+        document.getElementById("enemy").value = b
+      } else {
+        b = "Scissor"
+        document.getElementById("enemy").value = b
+      }
+      document.getElementById("result").value = val
+
+      if (val == b) {
+        document.getElementById("rest").value = "It's A Tie"
+      } else if (val == "Rock" && b == "Paper" || val == "Paper" && b == "Scissor" || val == "Scissor" && b == "Rock") {
+        document.getElementById("rest").value = "You Lose"
+      } else {
+        document.getElementById("rest").value = "You Win"
+      }
+    }
+  </script>
+</body>
+</html>
+<style>
+  body {
+    background-color: aqua;
+  }
+  .container {
+    background-color: gray;
+    border: 3px black solid;
+    display: grid;
+    grid-template-columns: 33.3333% 33.3333% 33.3333%;
+    grid-template-rows:10% 25% 20% 10% 25% 10%;
+    height: 818px;
+  }
+
+  input {
+    grid-column: 1/4;
+    text-align: center;
+    font-size: 50px;
+    background-color: gray;
+    border: 0;
+  }
+
+  .text {
+    grid-column: 1/4;
+    text-align: center;
+    font-size: 50px;
+    background-color: white;
+  }
+
+  .rest {
+    background-color: gray;
+  }
+
+  button {
+    margin: 5px;
+    border: 0;
+    border-bottom: 4px solid green;
+    border-right: 4px solid green;
+    border-radius: 15px;
+  }
+
+  button:active {
+    margin: 5px;
+    border: 0;
+    border-top: 4px solid green;
+    border-left: 4px solid green;
+    background-color: gainsboro;
+  }
+</style>
